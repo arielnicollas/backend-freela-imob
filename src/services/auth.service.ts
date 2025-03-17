@@ -6,6 +6,7 @@ import * as bcrypt from 'bcryptjs';
 import { UserDocument } from '..//schemas/user.schema';
 import { RegisterDto} from '../dtos/register.dto';
 import { LoginDto} from '../dtos/login.dto';
+import { cp } from 'fs';
 
 @Injectable()
 export class AuthService {
@@ -15,7 +16,7 @@ export class AuthService {
   ) {}
 
   async register(registerDto: RegisterDto) {
-    const { email, password } = registerDto;
+    const { email, password, cpf } = registerDto;
 
     const existingUser = await this.userModel.findOne({ email });
     if (existingUser) {
@@ -37,6 +38,7 @@ export class AuthService {
         name: savedUser.name,
         email: savedUser.email,
         role: savedUser.role,
+        cpf: savedUser.cpf,
       },
       token,
     };

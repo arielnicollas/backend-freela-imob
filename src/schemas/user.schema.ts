@@ -13,6 +13,9 @@ export class UserDocument extends Document {
   @Prop({ required: true })
   password: string;
 
+  @Prop({ required: false })
+  cpf: string;
+
   @Prop({ required: true, enum: UserRole })
   role: UserRole;
 

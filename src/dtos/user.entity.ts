@@ -7,6 +7,7 @@ export enum UserRole {
     id?: string;
     name: string;
     email: string;
+    cpf: string;
     password: string;
     role: UserRole;
     createdAt?: Date;
